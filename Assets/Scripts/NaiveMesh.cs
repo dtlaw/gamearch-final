@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+[ RequireComponent( typeof( VoxelMap ), typeof( MeshFilter ))]
 public class NaiveMesh : MonoBehaviour {
 
 	// Private variables
-	// Voxel map
-	private int[, ,] _map = new int[, ,] {
-		{{ 1, 0, 0 }, { 1, 1, 1 }},
-		{{ 1, 1, 0 }, { 1, 0, 1 }}
-	};
-
 	private List< Vector3 > _verts;
 	private List< Vector2 > _uv;
 	private List< int > _tris;
@@ -17,6 +12,7 @@ public class NaiveMesh : MonoBehaviour {
 
 	// Messages
 	private void Awake() {
+		int[, ,] map = GetComponent< VoxelMap >().Map;
 
 		// Generate mesh
 		Mesh mesh = new Mesh();
@@ -25,10 +21,10 @@ public class NaiveMesh : MonoBehaviour {
 		_tris = new List< int >();
 
 		int i = 0;
-		for ( int x = 0; x < _map.GetLength( 0 ); ++x ) {
-			for ( int y = 0; y < _map.GetLength( 1 ); ++y ) {
-				for ( int z = 0; z < _map.GetLength( 2 ); ++z ) {
-					if ( _map[ x, y, z ] == 1 ) {
+		for ( int x = 0; x < map.GetLength( 0 ); ++x ) {
+			for ( int y = 0; y < map.GetLength( 1 ); ++y ) {
+				for ( int z = 0; z < map.GetLength( 2 ); ++z ) {
+					if ( map[ x, y, z ] == 1 ) {
 
 						// Front
 						_verts.Add( new Vector3( x, y, z ));
