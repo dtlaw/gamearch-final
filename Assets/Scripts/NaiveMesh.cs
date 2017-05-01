@@ -10,7 +10,7 @@ public class NaiveMesh : MonoBehaviour {
 	private List< int > _tris;
 
 
-	// Messages
+	// Public interface
 	public Mesh Generate() {
 		int[, ,] map = GetComponent< VoxelMap >().Map;
 

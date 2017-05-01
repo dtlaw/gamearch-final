@@ -1,7 +1,5 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine;
-
 
 [ RequireComponent( typeof( VoxelMap ), typeof( MeshFilter ))]
 public class CullingMesh : MonoBehaviour {
@@ -11,7 +9,8 @@ public class CullingMesh : MonoBehaviour {
 	private List< Vector2 > _uv;
 	private List< int > _tris;
 
-	// Messages
+
+	// Public interface
 	public Mesh Generate() {
 		int[, ,] map = GetComponent< VoxelMap >().Map;
 
