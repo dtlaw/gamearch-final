@@ -11,7 +11,7 @@ public class NaiveMesh : MonoBehaviour {
 
 
 	// Messages
-	private void Awake() {
+	public Mesh Generate() {
 		int[, ,] map = GetComponent< VoxelMap >().Map;
 
 		// Generate mesh
@@ -107,6 +107,7 @@ public class NaiveMesh : MonoBehaviour {
 		mesh.vertices = _verts.ToArray();
 		mesh.uv = _uv.ToArray();
 		mesh.triangles = _tris.ToArray();
-		GetComponent< MeshFilter >().mesh = mesh;
+
+		return mesh;
 	}
 }
