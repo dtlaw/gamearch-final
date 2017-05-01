@@ -10,6 +10,8 @@ public class MeshSwitcher : MonoBehaviour {
 	private Text _triDisplay;
 	[ SerializeField ]
 	private Text _vertDisplay;
+	[ SerializeField ]
+	private Text _algoDisplay;
 
 
 	// Private variables
@@ -30,12 +32,13 @@ public class MeshSwitcher : MonoBehaviour {
 	private void Update() {
 		if ( Input.GetKeyDown( "1" )) {
 			_meshFilter.mesh = _naiveMesh.Generate();
-			_triDisplay.text = "Tris: " + _meshFilter.mesh.triangles.Length;
-			_vertDisplay.text = "Verts: " + _meshFilter.mesh.vertices.Length;
+			_algoDisplay.text = "Algo: Naive";
 		} else if ( Input.GetKeyDown( "2" )) {
 			_meshFilter.mesh = _cullingMesh.Generate();
+			_algoDisplay.text = "Algo: Culling";
 		} else if ( Input.GetKeyDown( "3" )) {
 			_meshFilter.mesh = _greedyMesh.Generate();
+			_algoDisplay.text = "Algo: Greedy";
 		}
 
 		_triDisplay.text = "Tris: " + _meshFilter.mesh.triangles.Length;
